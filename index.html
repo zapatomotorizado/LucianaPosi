@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>XV Años • Luciana Arce Altamirano | Invitación Mágica</title>
+  
+  <!-- Metadatos Open Graph / Compartir en Redes y WhatsApp -->
+  <meta property="og:title" content="Mis 15 Años • Luciana Arce Altamirano">
+  <meta property="og:description" content="Estás cordialmente invitado a celebrar una noche mágica en el País de las Maravillas. Sábado 5 de Septiembre de 2026.">
+  <meta property="og:image" content="assets/images/portrait-1.jpg">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#040914">
+
+  <!-- Estilos CSS -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+
+  <!-- Imagen de Fondo Fija Inmersiva Wonderland -->
+  <div class="fixed-background-wallpaper"></div>
+
+  <!-- Canvas de Partículas Mágicas y Polvo Estelar -->
+  <canvas id="particles-canvas"></canvas>
+
+  <!-- Resplandores de Iluminación Ambiental -->
+  <div class="ambient-glow ambient-glow-1"></div>
+  <div class="ambient-glow ambient-glow-2"></div>
+
+  <!-- Contenedor del Reproductor YouTube IFrame (Pista Oficial eEFDN451_Xc) -->
+  <div id="youtube-audio-player" style="position:fixed;bottom:-9999px;left:-9999px;width:1px;height:1px;opacity:0.01;pointer-events:none;z-index:-1;"></div>
+
+  <!-- Elemento de Audio Local MP3 (Detecta automáticamente cualquier archivo colocado en assets/audio/) -->
+  <audio id="bg-music" loop preload="auto">
+    <source src="assets/audio/alices-theme.mp3" type="audio/mpeg">
+    <source src="assets/audio/musica.mp3" type="audio/mpeg">
+    <source src="assets/audio/cancion.mp3" type="audio/mpeg">
+    <source src="assets/audio/audio.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- =========================================================================
+       PANTALLA DE ENTRADA TEATRAL / PORTAL WONDERLAND
+       ========================================================================= -->
+  <div id="portal-overlay">
+    <div class="portal-card">
+      <!-- Fondo con la foto de Luciana con opacidad del 50% dentro del recuadro -->
+      <div class="portal-card-bg"></div>
+
+      <div class="portal-ornament">Mis Quince Años</div>
+      
+      <div class="portal-watch-wrapper">
+        <div class="portal-watch-ring"></div>
+        <div class="portal-watch-ring-inner"></div>
+        <div class="portal-key-icon">🗝️</div>
+      </div>
+
+      <div class="portal-tagline">Invitación Exclusiva</div>
+      <h1 class="portal-name">Luciana Arce Altamirano</h1>
+      <p class="portal-date">05 • SEPTIEMBRE • 2026</p>
+
+      <button id="btn-open-invitation" class="btn-open-invitation" aria-label="Abrir Invitación">
+        <span>✨ Abrir Invitación ✨</span>
+      </button>
+
+      <div class="portal-audio-notice">
+        <span>🎵 Experiencia inmersiva con música mágica</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       REPRODUCTOR DE AUDIO FLOTANTE
+       ========================================================================= -->
+  <div id="floating-audio" title="Reproducir / Pausar Música">
+    <div class="audio-btn-circle">
+      <span id="audio-icon">🎵</span>
+    </div>
+    <div class="audio-wave">
+      <div class="audio-wave-bar"></div>
+      <div class="audio-wave-bar"></div>
+      <div class="audio-wave-bar"></div>
+      <div class="audio-wave-bar"></div>
+    </div>
+    <span class="audio-label">Música</span>
+  </div>
+
+  <!-- =========================================================================
+       CONTENIDO PRINCIPAL
+       ========================================================================= -->
+  <div class="main-wrapper">
+
+    <!-- HERO SECTION -->
+    <header class="hero-section">
+      <div class="hero-background-art"></div>
+      
+      <div class="wonderland-crown">👑</div>
+      <div class="hero-pretitle">Mis Quince Años</div>
+      <h1 class="hero-title">Luciana Arce Altamirano</h1>
+
+      <div class="hero-badge-xv">
+        <span>XV en el País de las Maravillas</span>
+      </div>
+
+      <div class="hero-quote-box reveal-on-scroll">
+        <p>“No puedo volver al ayer porque ya era una persona diferente entonces... Los momentos más mágicos de la vida se vuelven eternos cuando se comparten con las personas que amas.”</p>
+        <span class="hero-quote-author">— Alicia en el País de las Maravillas</span>
+      </div>
+
+      <div class="hero-date-highlight reveal-on-scroll delay-1">
+        SÁBADO, 5 DE SEPTIEMBRE DE 2026
+      </div>
+    </header>
+
+    <!-- SECCIÓN CUENTA REGRESIVA -->
+    <section class="section" id="countdown-section">
+      <div class="section-header reveal-on-scroll">
+        <span class="section-tag">El Tiempo Corre</span>
+        <h2 class="section-title">Cuenta Regresiva</h2>
+        <div class="section-divider">
+          <span class="section-divider-icon">⏳</span>
+        </div>
+      </div>
+
+      <div class="countdown-container reveal-on-scroll delay-1">
+        <div class="countdown-box">
+          <div id="cd-days" class="countdown-number">00</div>
+          <div class="countdown-label">Días</div>
+        </div>
+        <div class="countdown-box">
+          <div id="cd-hours" class="countdown-number">00</div>
+          <div class="countdown-label">Horas</div>
+        </div>
+        <div class="countdown-box">
+          <div id="cd-minutes" class="countdown-number">00</div>
+          <div class="countdown-label">Minutos</div>
+        </div>
+        <div class="countdown-box">
+          <div id="cd-seconds" class="countdown-number">00</div>
+          <div class="countdown-label">Segundos</div>
+        </div>
+      </div>
+
+      <div class="calendar-action-center reveal-on-scroll delay-2">
+        <a href="#" id="btn-add-calendar" class="btn-calendar">
+          <span>📅 Agendar en Google Calendar</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- SECCIÓN HOMENAJE A LOS PADRES -->
+    <section class="section" id="parents-section">
+      <div class="parents-card glass-card reveal-on-scroll">
+        <div class="section-tag">Gratitud & Amor</div>
+        <h2 class="section-title">Con la Bendición de Dios</h2>
+        <div class="section-divider">
+          <span class="section-divider-icon">✨</span>
+        </div>
+        
+        <p class="parents-quote">
+          “Hay momentos en la vida que son inolvidables, y compartirlos con quienes más amamos los hace eternos. Gracias por ser mis guías, mi ejemplo y el amor incondicional que ilumina mis pasos.”
+        </p>
+
+        <div class="parents-names-box">
+          <span class="parents-label">Gracias a mis queridos padres:</span>
+          <span class="parents-names">Marco Antonio Arce & Carla Altamirano</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN RECEPCIÓN Y UBICACIÓN -->
+    <section class="section" id="location-section">
+      <div class="section-header reveal-on-scroll">
+        <span class="section-tag">Lugar del Encuentro</span>
+        <h2 class="section-title">Recepción del Evento</h2>
+        <div class="section-divider">
+          <span class="section-divider-icon">🏰</span>
+        </div>
+      </div>
+
+      <div class="location-grid reveal-on-scroll delay-1">
+        <div class="location-card glass-card">
+          <div class="location-icon-wrapper">
+            <span>🏰</span>
+          </div>
+          <h3 class="venue-name">Salón Princes</h3>
+          <div class="venue-time-badge">
+            <span>⏰ 7:00 PM (Hora de inicio)</span>
+          </div>
+          <p class="venue-description">
+            Acompáñanos a vivir una velada mágica llena de música, elegancia y momentos inolvidables en las instalaciones del Salón Princes.
+          </p>
+
+          <div class="location-buttons-group">
+            <a href="https://maps.app.goo.gl/zEunKEA5UZ9e9R8E9" target="_blank" rel="noopener noreferrer" class="btn-primary-gold">
+              <span>📍 Abrir en Google Maps</span>
+            </a>
+            <a href="https://maps.app.goo.gl/zEunKEA5UZ9e9R8E9" target="_blank" rel="noopener noreferrer" class="btn-secondary-glass">
+              <span>🧭 ¿Cómo Llegar?</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN ITINERARIO MÁGICO -->
+    <section class="section" id="itinerary-section">
+      <div class="section-header reveal-on-scroll">
+        <span class="section-tag">Cronograma de la Noche</span>
+        <h2 class="section-title">Itinerario de Ensueño</h2>
+        <div class="section-divider">
+          <span class="section-divider-icon">🕰️</span>
+        </div>
+      </div>
+
+      <div class="itinerary-timeline">
+        <!-- 7:00 PM -->
+        <div class="timeline-item reveal-on-scroll">
+          <div class="timeline-node">🗝️</div>
+          <div class="timeline-card">
+            <span class="timeline-time">07:00 PM</span>
+            <h4 class="timeline-title">Recepción de Invitados</h4>
+            <p class="timeline-desc">Bienvenida al País de las Maravillas, cóctel de inicio y ubicación en las mesas reales.</p>
+          </div>
+        </div>
+
+        <!-- 9:00 PM -->
+        <div class="timeline-item reveal-on-scroll delay-1">
+          <div class="timeline-node">🥂</div>
+          <div class="timeline-card">
+            <span class="timeline-time">09:00 PM</span>
+            <h4 class="timeline-title">Vals & Brindis de Honor</h4>
+            <p class="timeline-desc">El emotivo vals de Luciana con sus padres, palabras de agradecimiento y brindis conmemorativo.</p>
+          </div>
+        </div>
+
+        <!-- 10:00 PM -->
+        <div class="timeline-item reveal-on-scroll delay-2">
+          <div class="timeline-node">🍽️</div>
+          <div class="timeline-card">
+            <span class="timeline-time">10:00 PM</span>
+            <h4 class="timeline-title">Cena de Gala</h4>
+            <p class="timeline-desc">Banquete especial preparado para todos los invitados de honor.</p>
+          </div>
+        </div>
+
+        <!-- 10:30 PM -->
+        <div class="timeline-item reveal-on-scroll delay-1">
+          <div class="timeline-node">🎉</div>
+          <div class="timeline-card">
+            <span class="timeline-time">10:30 PM</span>
+            <h4 class="timeline-title">Gran Fiesta</h4>
+            <p class="timeline-desc">Apertura de la pista de baile, show de luces, música en vivo y diversión sin límites.</p>
+          </div>
+        </div>
+
+        <!-- 00:00 AM -->
+        <div class="timeline-item reveal-on-scroll delay-2">
+          <div class="timeline-node">🎂</div>
+          <div class="timeline-card">
+            <span class="timeline-time">00:00 AM</span>
+            <h4 class="timeline-title">Corte de la Torta</h4>
+            <p class="timeline-desc">Cantamos el feliz cumpleaños, soplamos las 15 velas y compartimos el delicioso pastel.</p>
+          </div>
+        </div>
+
+        <!-- 03:00 AM -->
+        <div class="timeline-item reveal-on-scroll delay-3">
+          <div class="timeline-node">🌙</div>
+          <div class="timeline-card">
+            <span class="timeline-time">03:00 AM</span>
+            <h4 class="timeline-title">Fin de la Fiesta</h4>
+            <p class="timeline-desc">Agradecimiento final y despedida de una noche que vivirá por siempre en nuestros corazones.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN GALERÍA DE FOTOS -->
+    <section class="section" id="gallery-section">
+      <div class="section-header reveal-on-scroll">
+        <span class="section-tag">Momentos Inolvidables</span>
+        <h2 class="section-title">Galería de Recuerdos</h2>
+        <div class="section-divider">
+          <span class="section-divider-icon">📸</span>
+        </div>
+      </div>
+
+      <div class="gallery-grid reveal-on-scroll delay-1">
+        <!-- Foto 1 -->
+        <div class="gallery-item">
+          <img src="assets/images/portal-bg.jpg" alt="Luciana - Sesión Especial XV Años" class="gallery-img" loading="lazy">
+          <div class="gallery-overlay">
+            <span class="gallery-zoom-badge">🔍 Ampliar Foto</span>
+          </div>
+        </div>
+
+        <!-- Foto 2 -->
+        <div class="gallery-item">
+          <img src="assets/images/portrait-2.jpg" alt="Luciana con Llave Dorada de Wonderland" class="gallery-img" loading="lazy">
+          <div class="gallery-overlay">
+            <span class="gallery-zoom-badge">🔍 Ampliar Foto</span>
+          </div>
+        </div>
+
+        <!-- Foto 3 -->
+        <div class="gallery-item">
+          <img src="assets/images/portrait-3.jpg" alt="Luciana con Corona de Princesa" class="gallery-img" loading="lazy">
+          <div class="gallery-overlay">
+            <span class="gallery-zoom-badge">🔍 Ampliar Foto</span>
+          </div>
+        </div>
+
+        <!-- Foto 4 -->
+        <div class="gallery-item">
+          <img src="assets/images/portrait-4.jpg" alt="Luciana en el Salón Real" class="gallery-img" loading="lazy">
+          <div class="gallery-overlay">
+            <span class="gallery-zoom-badge">🔍 Ampliar Foto</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN DRESS CODE & LLUVIA DE SOBRES -->
+    <section class="section" id="details-section">
+      <div class="two-cards-grid">
+        <!-- Dress Code -->
+        <div class="glass-card feature-box reveal-on-scroll">
+          <div class="feature-icon-circle">👗</div>
+          <h3 class="feature-title">Código de Vestimenta</h3>
+          <p class="feature-description">
+            <strong>Formal / Elegante</strong><br>
+            Traje oscuro para caballeros y vestido largo / gala para damas.
+          </p>
+          <div class="dresscode-alert">
+            👑 <em>Nota especial: El color azul celeste / azul rey queda reservado exclusivamente con cariño para la Quinceañera.</em>
+          </div>
+        </div>
+
+        <!-- Lluvia de Sobres / Mesa de Regalos con Código QR -->
+        <div class="glass-card feature-box reveal-on-scroll delay-1">
+          <div class="feature-icon-circle">🎁</div>
+          <h3 class="feature-title">Mesa de Regalos</h3>
+          <p class="feature-description">
+            Tu presencia es mi mayor regalo, pero si deseas hacerme un detalle, puedes escanear el siguiente código QR o utilizar el buzón de <strong>Lluvia de Sobres</strong> en la recepción.
+          </p>
+          <div class="qr-card-container">
+            <div class="qr-image-wrapper">
+              <img id="qr-regalo-img" src="assets/images/qr-regalo.jpg" alt="Código QR de Regalo para Luciana" class="qr-code-img">
+            </div>
+            <div class="qr-buttons-group">
+              <button id="btn-copy-qr" class="btn-copy-qr" type="button">
+                <span>📋 Copiar QR</span>
+              </button>
+              <a href="assets/images/qr-regalo.jpg" download="QR-Regalo-Luciana-15.jpg" class="btn-download-qr">
+                <span>📥 Descargar QR</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN CONFIRMACIÓN DE ASISTENCIA (RSVP) -->
+    <section class="section rsvp-section" id="rsvp-section">
+      <div class="glass-card rsvp-box reveal-on-scroll">
+        <div class="section-tag">Reserva tu Lugar</div>
+        <h2 class="section-title">Confirmación de Asistencia</h2>
+        <div class="section-divider">
+          <span class="section-divider-icon">💌</span>
+        </div>
+
+        <p class="rsvp-subtitle">
+          Tu compañía es fundamental en esta noche de ensueño. Por favor confírmanos tu presencia para tener preparado tu lugar en el banquete real.
+        </p>
+
+        <button class="btn-rsvp-open js-open-rsvp">
+          <span>✨ Confirmar Asistencia ✨</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer reveal-on-scroll">
+      <div class="footer-quote">“Que comience la magia...”</div>
+      <div class="footer-name">LUCIANA ARCE ALTAMIRANO • XV AÑOS</div>
+      <p class="footer-copyright">Sábado 5 de Septiembre de 2026 • Salón Princes</p>
+    </footer>
+
+  </div>
+
+  <!-- =========================================================================
+       MODAL DE FORMULARIO RSVP
+       ========================================================================= -->
+  <div id="rsvp-modal">
+    <div class="modal-card">
+      <button class="modal-close-btn js-close-rsvp" aria-label="Cerrar modal">&times;</button>
+      
+      <h3 class="modal-title">Confirmar Asistencia</h3>
+      <p class="modal-subtitle">XV Años de Luciana Arce Altamirano</p>
+
+      <form id="rsvp-form">
+        <div class="form-group">
+          <label for="rsvp-name" class="form-label">Nombre y Apellido *</label>
+          <input type="text" id="rsvp-name" class="form-input" placeholder="Ej. Familia Pérez / Juan Carlos" required>
+        </div>
+
+        <div class="form-group">
+          <label for="rsvp-attendance" class="form-label">¿Asistirás a la celebración? *</label>
+          <select id="rsvp-attendance" class="form-select" required>
+            <option value="Sí, asistiré con mucho gusto 🎉">¡Sí, asistiré con mucho gusto! 🎉</option>
+            <option value="Lamentablemente no podré asistir 🥺">Lamentablemente no podré asistir 🥺</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="rsvp-guests" class="form-label">Cantidad de Pases / Acompañantes *</label>
+          <select id="rsvp-guests" class="form-select" required>
+            <option value="1 persona (Pase individual)">1 persona (Pase individual)</option>
+            <option value="2 personas (Pareja)">2 personas (Pareja)</option>
+            <option value="3 personas">3 personas</option>
+            <option value="4 personas o más (Familia)">4 personas o más (Familia)</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="rsvp-message" class="form-label">Mensaje o Dedicatoria para Luciana (Opcional)</label>
+          <textarea id="rsvp-message" class="form-textarea" placeholder="Escribe tus buenos deseos para esta fecha tan especial..."></textarea>
+        </div>
+
+        <button type="submit" class="btn-submit-whatsapp">
+          <span>💬 Enviar Confirmación por WhatsApp</span>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       MODAL LIGHTBOX DE FOTOS
+       ========================================================================= -->
+  <div id="lightbox-modal">
+    <div class="lightbox-content">
+      <button class="lightbox-close" aria-label="Cerrar visor">&times;</button>
+      <div class="lightbox-image-wrapper">
+        <img id="lightbox-img" class="lightbox-img" src="" alt="">
+      </div>
+      <button class="lightbox-nav lightbox-prev" aria-label="Foto anterior">&#10094;</button>
+      <button class="lightbox-nav lightbox-next" aria-label="Foto siguiente">&#10095;</button>
+    </div>
+  </div>
+
+  <!-- Toast Notifier -->
+  <div id="toast-notification">✨ Mensaje copiado</div>
+
+  <!-- Scripts -->
+  <script src="https://www.youtube.com/iframe_api"></script>
+  <script src="js/particles.js"></script>
+  <script src="js/audio-player.js"></script>
+  <script src="js/gallery-modal.js"></script>
+  <script src="js/rsvp-modal.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
